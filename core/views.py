@@ -28,9 +28,6 @@ class DetailArticleView(DetailView):
             context['like_by_user'] = True 
         return context
 
-
-
-
 class LikeArticle(View):
     def post(self, request, pk):
         article = Article.objects.get(id=pk)
