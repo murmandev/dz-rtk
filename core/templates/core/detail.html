@@ -3,11 +3,6 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-md-4 col-12 mx-5 mt-3">
-        <a class="btn btn-outline-secondary" href="{% url 'index' %}">Вернуться назад</a>
-    </div>
-</div>
-<div class="row">
     <div class="col-md-6 col-12 mx-md-auto mb-3 pb-2 mx-3">
         <h1>{{ object.title }}</h1>
         <p class="text-muted">{{ object.date }}</p>
@@ -21,27 +16,43 @@
 
 <div class="row my-3">
     <div class="col-md-6 col-12 mx-md-auto mx-3">
-        {% if object.likes.count == 1 %}
-            <p>{{ object.likes.count }} человеку нравится этa новость</p>
-        {% else %}
-            <p>{{ object.likes.count }} людям нравится этa новость</p>
-        {% endif %}
 
-        {% if request.user.is_authenticated %}
-            {% if like_by_user %}
-                <form method="POST" action="{% url 'like_article' object.id %}">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-danger"> Не нравится </button>
-                </form>
-            {% else %}
-                <form method="POST" action="{% url 'like_article' object.id %}">
-                    {% csrf_token %}
-                    <button class="btn btn-outline-danger"> Нравится </button>
-                </form>
-            {% endif %}
-        {% else %}
-            <button class="btn btn-outline-primary" disabled> Войдите чтобы нажать нравится </button>
-        {% endif %}
+        <div class="container">
+            <div class="row">
+
+                
+                <div class="col-2 mb-10">
+                    <a class="btn btn-outline-light bg-secondary" href="{% url 'index' %}"><h1> ⏎ </h1></a>
+                </div>
+                
+                <div class="col-9 text-end">
+                    {% if request.user.is_authenticated %}
+                        {% if like_by_user %}
+                            <form method="POST" action="{% url 'like_article' object.id %}">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-danger"> Не нравится </button>
+                            </form>
+                        {% else %}
+                            <form method="POST" action="{% url 'like_article' object.id %}">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-danger"> Нравится </button>
+                            </form>
+                        {% endif %}
+                    {% else %}
+                        <button class="btn btn-outline-primary" disabled> Войдите чтобы нажать нравится </button>
+                    {% endif %}
+                </div>
+
+                <div class="col-1 mt-1">
+                    {% if object.likes.count == 0 %}
+                        <p class="text-muted"> 🤍 </p>
+                    {% else %}
+                        <p class="text-muted">{{ object.likes.count }} ❤</p>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 
