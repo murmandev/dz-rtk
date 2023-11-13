@@ -1,0 +1,63 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5 text-center">
+            <h1 class="fw-bolder">Новостной ресурс</h1>
+            <h5 class="text-muted">Свежие новости</h5>
+
+        </div>
+    </div>
+
+    {% for object in object_list %}
+    <div class="row">
+        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5">
+            <h3 class="fw-bold">{{ object.title }}</h3>
+            <p class="text-muted">{{ object.date }}</p>
+            <p class="text-muted">Автор: {{ object.author.username }}</p>
+            {% if object.likes.count == 1 %}
+                <p class="text-muted">{{ object.likes.count }} человеку нравится этa новость</p>
+            {% else %}
+                <p class="text-muted">{{ object.likes.count }} людям нравится этa новость</p>
+            {% endif %}
+
+            <div class="my-3">
+                {{ object.content|truncatewords_html:50|safe }}
+            </div>
+
+            <a href="{% url 'detail_article' object.id %}">Читать полностью</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <nav>
+        <ul class="pagination">
+            <div class="mx-auto d-flex flex-row mt-5">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">&laquo; Первая</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previos_page_number }}"> Предыдущая </a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item">
+                    <a class="page-link" href="#">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.</a>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+                    </li>
+                {% endif %}
+
+
+            </div>
+        </ul>
+
+    </nav>
+{% endblock content %}
