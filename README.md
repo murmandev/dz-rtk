@@ -3,7 +3,7 @@
 
 **Использованы библиотеки:**
 
-    - crispy_forms, crispy_bootstrap5 - для улучшения вида стандартных форм Django;
-    - tinymce - веб редактор текста.
-
+    - crispy_forms, crispy_bootstrap5 - для улучшения вида стандартных форм Django
+    - tinymce - веб редактор текста
+    - pillow - реализована загрузка картинок
 
