@@ -2,30 +2,39 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5 text-center">
+        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
             <h1 class="fw-bolder">Новостной ресурс</h1>
             <h5 class="text-muted">Свежие новости</h5>
-
         </div>
     </div>
 
     {% for object in object_list %}
     <div class="row">
-        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-5">
-            <h3 class="fw-bold">{{ object.title }}</h3>
-            <p class="text-muted">{{ object.date }}</p>
-            <p class="text-muted">Автор: {{ object.author.username }}</p>
-            {% if object.likes.count == 1 %}
-                <p class="text-muted">{{ object.likes.count }} человеку нравится этa новость</p>
-            {% else %}
-                <p class="text-muted">{{ object.likes.count }} людям нравится этa новость</p>
-            {% endif %}
-
-            <div class="my-3">
-                {{ object.content|truncatewords_html:50|safe }}
+        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-3 mb-5">
+            <div class="card">
+                <img src="https://source.unsplash.com/random/1920x1080" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="card-title">{{ object.title }}</h3>
+                    <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
+                    <div class="card-text my-3">
+                        {{ object.content|truncatewords_html:50|safe }}
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="{% url 'detail_article' object.id %}">Читать полностью</a>
+                            </div>
+                            <div class="col-8 text-end">
+                                {% if object.likes.count == 1 %}
+                                    <p class="text-muted">{{ object.likes.count }} человеку нравится этa новость</p>
+                                {% else %}
+                                    <p class="text-muted">{{ object.likes.count }} людям нравится этa новость</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <a href="{% url 'detail_article' object.id %}">Читать полностью</a>
         </div>
     </div>
     {% endfor %}
