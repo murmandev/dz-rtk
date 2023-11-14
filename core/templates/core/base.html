@@ -5,15 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/core.css' %}">
     <title>News</title>
 </head>
 <body>
-    {% include 'core/nav.html' %}
-
-    {% block content %}
-    {% endblock content %}
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2" style="background-color: rgb(231, 230, 181);">
+                <h2 class="colnav text-center text-md-start">Пункты меню:</h2>
+                {% include 'core/nav2.html' %}
+            </div>     
+            <div class="col-10 text-center">
+                {% block content %}
+                {% endblock content %}
+            </div>         
+        </div>
+    </div>
 
     <script src="{% static 'core/js/bootstrap.min.js'%}"></script>
+    <script src="https://kit.fontawesome.com/a97047fead.js" crossorigin="anonymous"></script>
 </body>
 </html>
