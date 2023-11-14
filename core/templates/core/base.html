@@ -12,10 +12,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-2" style="background-color: rgb(231, 230, 181);">
-                <h2 class="colnav text-center text-md-start">Пункты меню:</h2>
+                <h2 class="colnav text-center text-center text-md-start d-none d-md-block">Пункты меню:</h2>
                 {% include 'core/nav2.html' %}
             </div>     
-            <div class="col-10 text-center">
+            <div class="col-10">
                 {% block content %}
                 {% endblock content %}
             </div>         
