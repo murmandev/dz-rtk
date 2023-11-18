@@ -17,5 +17,3 @@ class RegisterView(View):
             form.save()
             return redirect('login')
         
-class ProfileView(View):
-    pass

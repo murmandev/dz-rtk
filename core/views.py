@@ -1,4 +1,4 @@
-from typing import Any
+#from typing import Any
 from django.shortcuts import get_object_or_404, render, redirect
 
 from django.views import View
@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from .models import Article
-
 
 
 class Index(ListView):
