@@ -5,6 +5,7 @@
         <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
             <h1 class="fw-bolder">Новостной ресурс</h1>
             <h5 class="text-muted">Свежие новости</h5>
+
         </div>
     </div>
 
@@ -16,6 +17,7 @@
                 <div class="card-body">
                     <h3 class="card-title">{{ object.title }}</h3>
                     <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
+
                     <div class="card-text my-3">
                         {{ object.content|truncatewords_html:50|safe }}
                     </div>

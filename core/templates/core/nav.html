@@ -1,33 +1,108 @@
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'index' %}">Агрегатор новостей</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Избранное</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">{{ request.user.username }}</a>
-          </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'logout' %}">Выйти</a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'register' %}">Регистрация</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'login' %}">Войти</a>
-            </li>
-            {% endif %}
-        </span>
-      </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="d-xl-none col-12 text-center">
+            <h3 class="colnav"><a href="{% url 'index' %}"><i class="fa-solid fa-home"></i></a></h1>
+        </div>
+        <div class="d-none d-xl-block col-md-2 gx-1">
+            <h4 class="colnav"><i class="fa-solid fa-home"></i></h4>
+        </div>
+        <div class="col-md-10 d-none d-xl-block">
+            <a class="link" href="{% url 'index' %}">
+                <h4>Домой</h4>
+            </a>
+        </div>
     </div>
-  </nav>
+
+    
+    {% if request.user.is_authenticated %}
+    
+        <div class="row">
+            <div class="d-xl-none col-12 text-center">
+                <h3 class="colnav"><a href="#"><i class="fa-solid fa-user"></i></a></h3>
+            </div>
+            <div class="d-none d-xl-block col-md-2 gx-1">
+                <h4 class="colnav"><i class="fa-solid fa-user"></i></h4>
+            </div>
+            <div class="col-md-10 d-none d-xl-block">
+                <a class="link" href="#">
+                    <h4>{{ user.username }}</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="d-xl-none col-12 text-center">
+                <h3 class="colnav"><a href="{% url 'featured' %}"><i class="fa-solid fa-newspaper"></i></a></h3>
+            </div>
+            <div class="d-none d-xl-block col-md-2 gx-1">
+                <h4 class="colnav"><i class="fa-solid fa-newspaper"></i></h4>
+            </div>
+            <div class="col-md-10 d-none d-xl-block">
+                <a class="link" href="{% url 'featured' %}">
+                    <h4>Закладки</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="d-xl-none col-12 text-center">
+                <h3 class="colnav"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></a></h3>
+            </div>
+            <div class="d-none d-xl-block col-md-2 gx-1">
+                <h4 class="colnav"><i class="fa fa-sign-out"></i></h4>
+            </div>
+            <div class="col-md-10 d-none d-xl-block text-start">
+                <a class="link" href="{% url 'logout' %}">
+                    <h4>Выход</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="d-xl-none col-12 text-center">
+                <h3 class="colnav"><a href="{% url 'create' %}">+</a></h3>
+            </div>
+            <div class="d-none d-xl-block col-md-2 gx-1">
+                <h4 class="colnav"></h4>
+            </div>
+            <div class="col-md-10 d-none d-xl-block text-start">
+                <a class="link" href="{% url 'create' %}">
+                    <h4>+</h4>
+                </a>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="row">
+            <div class="d-xl-none col-12 text-center">
+                <h3 class="colnav"><a href="{% url 'register' %}"><i class="fa-solid fa-key"></i></a></h3>
+            </div>
+            <div class="d-none d-xl-block col-md-2 gx-1">
+                <h4 class="colnav"><i class="fa-solid fa-key"></i></h4>
+            </div>
+            <div class="col-md-10 d-none d-xl-block">
+                <a class="link" href="{% url 'register' %}">
+                    <h4>Регистрация</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="d-xl-none col-12 text-center">
+                <h3 class="colnav"><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i></a></h3>
+            </div>
+            <div class="d-none d-xl-block col-md-2 gx-1">
+                <h4 class="colnav"><i class="fa-solid fa-right-to-bracket"></i></h4>
+            </div>
+            <div class="col-md-10 d-none d-xl-block text-start">
+                <a class="link" href="{% url 'login' %}">
+                    <h4>Вход</h4>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+
+
+
+</div>    

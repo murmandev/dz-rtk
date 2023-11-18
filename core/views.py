@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib import messages
 from .models import Article
 
 class Index(ListView):
@@ -38,6 +40,22 @@ class LikeArticle(View):
         
         article.save
         return redirect('detail_article', pk)
+    
+class CreateArticleView(CreateView):
+    model = Article
+    template_name = 'core/create.html'
+    fields ='__all__'
+    success_url = reverse_lazy('index')
+    
+
+#def delete_article(request, pk):
+#    get_article = Article.objects.get(pk=pk)
+#    get_article.delete
+#    return redirect(reverse_lazy('index'))
 
 
+class DeleteArticleView(DeleteView):
+	model = Article
+	template_name = 'core/delete.html'
+	success_url = reverse_lazy('index')
 
