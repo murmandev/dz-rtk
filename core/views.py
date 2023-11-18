@@ -4,8 +4,10 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from .models import Article
+
 
 
 class Index(ListView):
@@ -53,12 +55,15 @@ class Moderated(View):
         return redirect('featured')
 
     
-class CreateArticleView(CreateView):
+class CreateArticleView(LoginRequiredMixin, CreateView):
     model = Article
     template_name = 'core/create.html'
-    fields =['title', 'content', 'author', 'image', ]
+    fields =['title', 'content', 'image', ]
     success_url = reverse_lazy('index')
-    
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)   
    
 
 class DeleteArticleView(DeleteView):

@@ -16,19 +16,6 @@
     
     {% if request.user.is_authenticated %}
     
-        <div class="row">
-            <div class="d-xl-none col-12 text-center">
-                <h3 class="colnav"><a href="#"><i class="fa-solid fa-user"></i></a></h3>
-            </div>
-            <div class="d-none d-xl-block col-md-2 gx-1">
-                <h4 class="colnav"><i class="fa-solid fa-user"></i></h4>
-            </div>
-            <div class="col-md-10 d-none d-xl-block">
-                <a class="link" href="#">
-                    <h4>{{ user.username }}</h4>
-                </a>
-            </div>
-        </div>
         {% if user.is_superuser %}
             <div class="row">
                 <div class="d-xl-none col-12 text-center">
@@ -47,6 +34,20 @@
 
         <div class="row">
             <div class="d-xl-none col-12 text-center">
+                <h3 class="colnav"><a href="{% url 'create' %}"><i class="fa-solid fa-plus"></i></a></h3>
+            </div>
+            <div class="d-none d-xl-block col-md-2 gx-1">
+                <h4 class="colnav"><i class="fa-solid fa-plus"></i></h4>
+            </div>
+            <div class="col-md-10 d-none d-xl-block text-start">
+                <a class="link" href="{% url 'create' %}">
+                    <h4>Новая</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="d-xl-none col-12 text-center">
                 <h3 class="colnav"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></a></h3>
             </div>
             <div class="d-none d-xl-block col-md-2 gx-1">
@@ -59,16 +60,18 @@
             </div>
         </div>
 
+        <hr>
+
         <div class="row">
             <div class="d-xl-none col-12 text-center">
-                <h3 class="colnav"><a href="{% url 'create' %}">+</a></h3>
+                <h3 class="colnav"><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a></h3>
             </div>
             <div class="d-none d-xl-block col-md-2 gx-1">
-                <h4 class="colnav"></h4>
+                <h4 class="colnav"><i class="fa-solid fa-user"></i></h4>
             </div>
-            <div class="col-md-10 d-none d-xl-block text-start">
-                <a class="link" href="{% url 'create' %}">
-                    <h4>+</h4>
+            <div class="col-md-10 d-none d-xl-block">
+                <a class="link" href="{% url 'profile' %}">
+                    <h4>{{ user.username }}</h4>
                 </a>
             </div>
         </div>

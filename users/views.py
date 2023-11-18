@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .forms import UserRegisterForm
+from django.views.generic import DetailView
+from django.contrib.auth.models import User
 
 class RegisterView(View):
     def get(self, request):
@@ -15,3 +17,5 @@ class RegisterView(View):
             form.save()
             return redirect('login')
         
+class ProfileView(View):
+    pass
