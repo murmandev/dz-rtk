@@ -16,24 +16,27 @@
                 <img src="{{ object.image.url }}" class="card-img-top" alt="Что то пошло не так, изображения нет!">
                 <div class="card-body">
                     <h3 class="card-title">{{ object.title }}</h3>
-                    <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
-
+                    <div class="row">
+                        <div class="col-10">
+                            <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
+                        </div>
+                        <div class="col-2">
+                            {% if object.likes.count == 0 %}
+                                <p class="text-muted"> 🖤 </p>
+                            {% else %}
+                                <p class="text-muted">{{ object.likes.count }} ❤</p>
+                            {% endif %}
+                        </div>
+                    </div>
                     <div class="card-text my-3">
                         {{ object.content|truncatewords_html:50|safe }}
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-12">
                                 <a href="{% url 'detail_article' object.id %}">Читать полностью</a>
                             </div>
-                            <div class="col-4 text-end">
-                                {% if object.likes.count == 0 %}
-                                    <p class="text-muted"> 🖤 </p>
-                                {% else %}
-                                    <p class="text-muted">{{ object.likes.count }} ❤</p>
-                                {% endif %}
-                            </div>
-                        </div>
+                         </div>
                     </div>
                 </div>
             </div>

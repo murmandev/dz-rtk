@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from typing import Any
+from django.shortcuts import get_object_or_404, render, redirect
 
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
@@ -6,17 +7,18 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Article
 
+
 class Index(ListView):
     model = Article
-    queryset = Article.objects.all().order_by('-date')
+    queryset = Article.objects.filter(featured = True).order_by('-date')
     template_name = 'core/index.html'
-    paginate_by = 1
+    paginate_by = 5
 
 class Featured(ListView):
     model = Article
-    queryset = Article.objects.filter(featured = True).order_by('-date')
+    queryset = Article.objects.filter(featured = False).order_by('-date')
     template_name = 'core/featured.html'
-    paginate_by = 1
+    paginate_by = 5
 
 class DetailArticleView(DetailView):
     model = Article
@@ -38,24 +40,30 @@ class LikeArticle(View):
         else:
             article.likes.add(request.user.id)
         
-        article.save
+        article.save()
         return redirect('detail_article', pk)
+
+class Moderated(View):
+    def post(self, request, pk):
+
+        article = Article.objects.get(id=pk)
+        article.featured = True
+
+        article.save()
+        return redirect('featured')
+
     
 class CreateArticleView(CreateView):
     model = Article
     template_name = 'core/create.html'
-    fields ='__all__'
+    fields =['title', 'content', 'author', 'image', ]
     success_url = reverse_lazy('index')
     
-
-#def delete_article(request, pk):
-#    get_article = Article.objects.get(pk=pk)
-#    get_article.delete
-#    return redirect(reverse_lazy('index'))
-
+   
 
 class DeleteArticleView(DeleteView):
 	model = Article
 	template_name = 'core/delete.html'
 	success_url = reverse_lazy('index')
+     
 

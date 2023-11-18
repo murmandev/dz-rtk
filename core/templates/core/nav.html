@@ -29,20 +29,21 @@
                 </a>
             </div>
         </div>
-
-        <div class="row">
-            <div class="d-xl-none col-12 text-center">
-                <h3 class="colnav"><a href="{% url 'featured' %}"><i class="fa-solid fa-newspaper"></i></a></h3>
+        {% if user.is_superuser %}
+            <div class="row">
+                <div class="d-xl-none col-12 text-center">
+                    <h3 class="colnav"><a href="{% url 'featured' %}"><i class="fa-solid fa-newspaper"></i></a></h3>
+                </div>
+                <div class="d-none d-xl-block col-md-2 gx-1">
+                    <h4 class="colnav"><i class="fa-solid fa-newspaper"></i></h4>
+                </div>
+                <div class="col-md-10 d-none d-xl-block">
+                    <a class="link" href="{% url 'featured' %}">
+                        <h4>Модерация</h4>
+                    </a>
+                </div>
             </div>
-            <div class="d-none d-xl-block col-md-2 gx-1">
-                <h4 class="colnav"><i class="fa-solid fa-newspaper"></i></h4>
-            </div>
-            <div class="col-md-10 d-none d-xl-block">
-                <a class="link" href="{% url 'featured' %}">
-                    <h4>Закладки</h4>
-                </a>
-            </div>
-        </div>
+        {% endif %}
 
         <div class="row">
             <div class="d-xl-none col-12 text-center">
