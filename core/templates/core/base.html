@@ -9,18 +9,25 @@
     <title>News</title>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-2" style="background-color: rgb(231, 230, 181);">
-                <h2 class="colnav text-center text-center text-md-start d-none d-md-block">Пункты меню:</h2>
-                {% include 'core/nav2.html' %}
-            </div>     
-            <div class="col-10">
-                {% block content %}
-                {% endblock content %}
-            </div>         
+    <main class="main">
+        <div class="container-fluid">
+            <div class="row" style="height: 100vh;">
+                <div class="col-2" style="background-color: rgb(231, 230, 181);">
+                    <div class="container my-3">
+                        {% include 'core/nav2.html' %}
+                    </div>
+                </div>     
+                <div class="col-10">
+                    {% block content %}
+                    {% endblock content %}
+                </div>         
+            </div>
         </div>
-    </div>
+    </main>
+    
+    <!-- <footer class="footer fixed-bottom">
+        {% include 'core/footer.html' %}
+    </footer> -->
 
     <script src="{% static 'core/js/bootstrap.min.js'%}"></script>
     <script src="https://kit.fontawesome.com/a97047fead.js" crossorigin="anonymous"></script>
