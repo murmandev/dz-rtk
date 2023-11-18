@@ -21,12 +21,12 @@
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-8">
                                 <a href="{% url 'detail_article' object.id %}">Читать полностью</a>
                             </div>
-                            <div class="col-8 text-end">
+                            <div class="col-4 text-end">
                                 {% if object.likes.count == 0 %}
-                                    <p class="text-muted"> 🤍 </p>
+                                    <p class="text-muted"> 🖤 </p>
                                 {% else %}
                                     <p class="text-muted">{{ object.likes.count }} ❤</p>
                                 {% endif %}
@@ -41,7 +41,7 @@
 
     <nav>
         <ul class="pagination">
-            <div class="mx-auto d-flex flex-row mt-5">
+            <div class="mx-auto d-flex flex-row mb-5">
                 {% if page_obj.has_previous %}
                     <li class="page-item">
                         <a class="page-link" href="?page=1">&laquo; Первая</a>

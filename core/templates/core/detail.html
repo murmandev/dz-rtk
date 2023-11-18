@@ -11,46 +11,45 @@
         <div>
             {{ object.content|safe }}
         </div>
-    </div>
-</div>
 
-<div class="row my-3">
-    <div class="col-md-6 col-12 mx-md-auto mx-3">
+        <div class="row my-5">
 
-        <div class="container">
-            <div class="row">
+           <div class="container">
+               <div class="row">
+                    <div class="col-12 text-end">
+                       {% if request.user.is_authenticated %}
+                           {% if like_by_user %}
+                               <form method="POST" action="{% url 'like_article' object.id %}">
+                                   {% csrf_token %}
+                                   <button class="btn btn-outline-danger"> 
 
-                
-                <div class="col-2 mb-10">
-                    <a class="btn btn-outline-dark " href="{% url 'index' %}"><h1> ⏎ </h1></a>
+                                    {% if object.likes.count == 0 %}
+                                        <p class="text-muted"> 🖤 </p>
+                                    {% else %}
+                                        <p class="text-muted">{{ object.likes.count }} ❤</p>
+                                    {% endif %}
+
+                                     </button>
+                               </form>
+                           {% else %}
+                               <form method="POST" action="{% url 'like_article' object.id %}">
+                                   {% csrf_token %}
+                                   <button class="btn btn-outline-danger">
+
+                                    {% if object.likes.count == 0 %}
+                                        <p class="text-muted"> 🖤 </p>
+                                    {% else %}
+                                        <p class="text-muted">{{ object.likes.count }} ❤</p>
+                                    {% endif %}    
+
+                                    </button>
+                               </form>
+                           {% endif %}
+                       {% else %}
+                           <button class="btn btn-outline-primary" disabled> Войдите чтобы нажать нравится </button>
+                       {% endif %}
+                    </div>
                 </div>
-                
-                <div class="col-9 text-end">
-                    {% if request.user.is_authenticated %}
-                        {% if like_by_user %}
-                            <form method="POST" action="{% url 'like_article' object.id %}">
-                                {% csrf_token %}
-                                <button class="btn btn-outline-danger"> Не нравится </button>
-                            </form>
-                        {% else %}
-                            <form method="POST" action="{% url 'like_article' object.id %}">
-                                {% csrf_token %}
-                                <button class="btn btn-outline-danger"> Нравится </button>
-                            </form>
-                        {% endif %}
-                    {% else %}
-                        <button class="btn btn-outline-primary" disabled> Войдите чтобы нажать нравится </button>
-                    {% endif %}
-                </div>
-
-                <div class="col-1 mt-1">
-                    {% if object.likes.count == 0 %}
-                        <p class="text-muted"> 🤍 </p>
-                    {% else %}
-                        <p class="text-muted">{{ object.likes.count }} ❤</p>
-                    {% endif %}
-                </div>
-
             </div>
         </div>
     </div>
