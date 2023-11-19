@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="d-xl-none col-12">
-            <h3 class="colnav"><a href="{% url 'index' %}"><i class="fa-solid fa-home"></i></a></h1>
+            <h3 class="colnav"><a title="К списку новостей" href="{% url 'index' %}"><i class="fa-solid fa-home"></i></a></h1>
         </div>
         <div class="d-none d-xl-block col-md-2 gx-1">
             <h4 class="colnav"><i class="fa-solid fa-home"></i></h4>
         </div>
         <div class="col-md-10 d-none d-xl-block">
             <a class="link" href="{% url 'index' %}">
-                <h4>Домой</h4>
+                <h4 title="К списку новостей">Домой</h4>
             </a>
         </div>
     </div>
@@ -19,14 +19,14 @@
         {% if user.is_superuser %}
             <div class="row">
                 <div class="d-xl-none col-12">
-                    <h3 class="colnav"><a href="{% url 'featured' %}"><i class="fa-solid fa-newspaper"></i></a></h3>
+                    <h3 class="colnav"><a title="Новости на модерацию" href="{% url 'featured' %}"><i class="fa-solid fa-newspaper"></i></a></h3>
                 </div>
                 <div class="d-none d-xl-block col-md-2 gx-1">
                     <h4 class="colnav"><i class="fa-solid fa-newspaper"></i></h4>
                 </div>
                 <div class="col-md-10 d-none d-xl-block">
                     <a class="link" href="{% url 'featured' %}">
-                        <h4>Модерация</h4>
+                        <h4 title="Новости на модерацию">Модерация</h4>
                     </a>
                 </div>
             </div>
@@ -34,28 +34,28 @@
 
         <div class="row">
             <div class="d-xl-none col-12">
-                <h3 class="colnav"><a href="{% url 'create' %}"><i class="fa-solid fa-plus"></i></a></h3>
+                <h3 class="colnav"><a title="Предложить новость" href="{% url 'create' %}"><i class="fa-solid fa-plus"></i></a></h3>
             </div>
             <div class="d-none d-xl-block col-md-2 gx-1">
                 <h4 class="colnav"><i class="fa-solid fa-plus"></i></h4>
             </div>
             <div class="col-md-10 d-none d-xl-block text-start">
                 <a class="link" href="{% url 'create' %}">
-                    <h4>Новая</h4>
+                    <h4 title="Предложить новость">Новая</h4>
                 </a>
             </div>
         </div>
 
         <div class="row">
             <div class="d-xl-none col-12">
-                <h3 class="colnav"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></a></h3>
+                <h3 class="colnav"><a title="Выйти с сайта" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i></a></h3>
             </div>
             <div class="d-none d-xl-block col-md-2 gx-1">
                 <h4 class="colnav"><i class="fa fa-sign-out"></i></h4>
             </div>
             <div class="col-md-10 d-none d-xl-block text-start">
                 <a class="link" href="{% url 'logout' %}">
-                    <h4>Выход</h4>
+                    <h4 title="Выйти с сайта">Выход</h4>
                 </a>
             </div>
         </div>
@@ -64,14 +64,14 @@
 
         <div class="row">
             <div class="d-xl-none col-12">
-                <h3 class="colnav"><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a></h3>
+                <h3 class="colnav"><a title="Профиль пользователя" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a></h3>
             </div>
             <div class="d-none d-xl-block col-md-2 gx-1">
                 <h4 class="colnav"><i class="fa-solid fa-user"></i></h4>
             </div>
             <div class="col-md-10 d-none d-xl-block">
                 <a class="link" href="{% url 'profile' %}">
-                    <h4>{{ user.username }}</h4>
+                    <h4 title="Профиль пользователя">{{ user.username }}</h4>
                 </a>
             </div>
         </div>
@@ -80,28 +80,28 @@
 
         <div class="row">
             <div class="d-xl-none col-12">
-                <h3 class="colnav"><a href="{% url 'register' %}"><i class="fa-solid fa-key"></i></a></h3>
+                <h3 class="colnav"><a title="Зарегистрироваться на сайте" href="{% url 'register' %}"><i class="fa-solid fa-key"></i></a></h3>
             </div>
             <div class="d-none d-xl-block col-md-2 gx-1">
                 <h4 class="colnav"><i class="fa-solid fa-key"></i></h4>
             </div>
             <div class="col-md-10 d-none d-xl-block">
                 <a class="link" href="{% url 'register' %}">
-                    <h4>Регистрация</h4>
+                    <h4 title="Зарегистрироваться на сайте">Регистрация</h4>
                 </a>
             </div>
         </div>
 
         <div class="row">
             <div class="d-xl-none col-12">
-                <h3 class="colnav"><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i></a></h3>
+                <h3 class="colnav"><a title="Войти на сайт" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i></a></h3>
             </div>
             <div class="d-none d-xl-block col-md-2 gx-1">
                 <h4 class="colnav"><i class="fa-solid fa-right-to-bracket"></i></h4>
             </div>
             <div class="col-md-10 d-none d-xl-block text-start">
                 <a class="link" href="{% url 'login' %}">
-                    <h4>Вход</h4>
+                    <h4 title="Войти на сайт">Вход</h4>
                 </a>
             </div>
         </div>
