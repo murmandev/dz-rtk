@@ -14,19 +14,19 @@
 
 2. Создать виртуальное окружение я использую python 3.12.0 (для Windows):
 
-<> python -m virtualenv env
-<> env\Scripts\activate
+###<> python -m virtualenv env
+###<> env\Scripts\activate
 
 3. Поставить все зависимости из файла requirements.txt:
 
-(env)> pip install -r requirements.txt
+###(env)> pip install -r requirements.txt
 
 4. Начальный контент загружен на github, для проверки;
 
 5. Учётная запись администратора:
 
-login:      admin
-password:   12345
+###login:      admin
+###password:   12345
 
 ##Надеюсь вам понравится)
     
