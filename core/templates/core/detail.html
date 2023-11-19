@@ -51,7 +51,7 @@
 
         <div class="row">
             <div class="col-6 text-start">
-                {% if request.user.username == object.author.username %}
+                {% if request.user.username == object.author.username or request.user.is_superuser %}
                     <div class="pb-3">
                         <a href="{% url 'delete' object.pk %}" class="pb-3">Удалить</a>
                     </div>
