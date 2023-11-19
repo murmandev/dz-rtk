@@ -2,10 +2,6 @@
 
 {% block content %}
 
-    <div class="mx-2">
-        <a href="{% url 'index' %}">Отмена</a>
-    </div>
-
     <div class="row">
         <div class="col-md-6 col-11 mx-md-auto mx-3 mt-md-0 mt-3">
             <h1>Удалить запись с сайта</h1>
@@ -13,7 +9,14 @@
 
             <form action="" method="POST">
                 {% csrf_token %}
-                <button class="btn btn-primary" type="submit">Подтвердить</button>
+                <div class="row">
+                    <div class="col-6 text-end">
+                        <button class="btn btn-primary" type="submit">Подтвердить</button>
+                    </div>
+                    <div class="col-6 text-start">
+                        <a class="btn btn-primary" href="{% url 'index' %}">Отмена</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
