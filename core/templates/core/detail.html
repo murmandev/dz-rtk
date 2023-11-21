@@ -43,7 +43,7 @@
                         </form>
                     {% endif %}
                 {% else %}
-                    <button class="btn btn-outline-primary" disabled> Войдите чтобы нажать нравится </button>
+                    <a href="{% url 'login' %}" class="btn text-info"><i class="fa fa-heart" aria-hidden="true"></i></a>
                 {% endif %}
             </div>
         </div>
