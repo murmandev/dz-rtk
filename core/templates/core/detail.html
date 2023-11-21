@@ -63,7 +63,7 @@
                     <form method="POST" action="{% url 'moderated' object.id %}">
                         {% csrf_token %}
                         <button class="btn">
-                            <p class="text-primary"><i class="fa-solid fa-newspaper"></i></p>
+                            <p title="Одобрить предложенную новость" class="text-primary"><i class="fa-solid fa-newspaper"></i></p>
                         </button>
                     </form>
                 </div>
