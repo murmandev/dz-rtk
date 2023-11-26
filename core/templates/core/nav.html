@@ -7,7 +7,7 @@
             <h4 class="colnav"><i class="fa-solid fa-home"></i></h4>
         </div>
         <div class="col-md-10 d-none d-xl-block">
-            <a class="link" href="{% url 'index' %}">
+            <a class="{% if nav_bar_color == 'index' %} link_active {% else %} link {% endif %}" href="{% url 'index' %}">
                 <h4 title="К списку новостей">Главная</h4>
             </a>
         </div>
@@ -25,7 +25,7 @@
                     <h4 class="colnav"><i class="fa-solid fa-newspaper"></i></h4>
                 </div>
                 <div class="col-md-10 d-none d-xl-block">
-                    <a class="link" href="{% url 'featured' %}">
+                    <a class="{% if nav_bar_color == 'featured' %} link_active {% else %} link {% endif %}" href="{% url 'featured' %}">
                         <h4 title="Новости на модерацию">Модерация</h4>
                     </a>
                 </div>

@@ -14,12 +14,22 @@ class Index(ListView):
     template_name = 'core/index.html'
     paginate_by = 5
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav_bar_color']= 'index'
+        return context
+
 
 class Featured(ListView):
     model = Article
     queryset = Article.objects.filter(featured = False).order_by('-date')
     template_name = 'core/featured.html'
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav_bar_color']= 'featured'
+        return context
 
 
 class DetailArticleView(DetailView):
