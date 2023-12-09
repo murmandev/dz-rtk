@@ -1,4 +1,16 @@
+{% load static %}
+
 <div class="container-fluid">
+
+    <div class="row">
+        <div class="d-xl-none col-12">
+            <img src="{% static 'core/images/it_news_s.jpg' %}" class="img-fluid mb-5" alt="Что то пошло не так, изображения нет!">
+        </div>
+        <div class="col-md-10 d-none d-xl-block">
+            <img src="{% static 'core/images/it_news.jpg' %}" class="img-fluid mb-3" alt="Что то пошло не так, изображения нет!">
+        </div>
+    </div>
+
     <div class="row">
         <div class="d-xl-none col-12">
             <h3 class="colnav">
