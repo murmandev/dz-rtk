@@ -27,12 +27,26 @@ class Search(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        return Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('-date')
+        if self.request.GET.get('date') == 'on':
+            answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('-date')
+            print('По дате!')
+        elif self.request.GET.get('title') == 'on':
+            answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('title')
+            print('По заголовку!')
+        elif self.request.GET.get('author') == 'on':
+            answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('author')
+            print('По автору!')
+        else:
+            answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q'))
+
+
+        return answer
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav_bar_color']= 'index'
         context['q'] = self.request.GET.get('q')
+        context['o'] = self.request.GET.get('o')
         return context
 
 
@@ -83,7 +97,6 @@ class Moderated(View):
         article.save()
         return redirect('featured')
 
-   
     
 class CreateArticleView(LoginRequiredMixin, CreateView):
     model = Article

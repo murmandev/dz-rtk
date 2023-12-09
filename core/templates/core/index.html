@@ -4,26 +4,37 @@
     <form action="{% url 'search' %}" method="get">
     <div class="row">
         <div class="input-group col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
-            <input type="text" class="form-control" placeholder="Поиск..." aria-label="Поиск..." aria-describedby="button-search" name="q">
-            <button class="btn btn-outline-secondary" type="submit" id="button-search">Искать</button>
+            <input type="text" class="form-control mx-2" placeholder="Поиск..." aria-label="Поиск..." aria-describedby="button-search" name="q">
+        
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" name="o">
+                <label class="btn btn-secondary">
+                  <input type="radio" name="date" id="date" autocomplete="off"> По дате
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="title" id="title" autocomplete="off"> По заголовку 
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="author" id="author" autocomplete="off"> По автору
+                </label>
+            </div>
+
+            <button class="btn btn-outline-secondary mx-2" type="submit" id="button-search">Искать</button>
         </div>
+
+        
     </div>
 
-
     <hr>
-    
 
     <div class="row">
-        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
+        <div class="col-md-9 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
             <h1 class="fw-bolder colnav">Свежие новости</h1>
         </div>
     </div>
 
-
-
         {% for object in object_list %}
         <div class="row">
-            <div class="col-md-6 col-12 mx-md-auto mx-3 mt-3 mb-5">
+            <div class="col-md-9 col-12 mx-md-auto mx-3 mt-3 mb-5">
                 <div class="card">
                     <img src="{{ object.image.url }}" class="card-img-top" alt="Что то пошло не так, изображения нет!">
                     <div class="card-body">

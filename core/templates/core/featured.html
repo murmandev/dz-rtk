@@ -2,14 +2,14 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
+        <div class="col-md-9 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
             <h1 class="fw-bolder colnav">Модерация</h1>
         </div>
     </div>
 
     {% for object in object_list %}
     <div class="row">
-        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-3 mb-5">
+        <div class="col-md-9 col-12 mx-md-auto mx-3 mt-3 mb-5">
             <div class="card">
                 <img src="{{ object.image.url }}" class="card-img-top" alt="Что то пошло не так, изображения нет!">
                 <div class="card-body">
