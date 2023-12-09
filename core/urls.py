@@ -3,7 +3,7 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import Index, DetailArticleView, LikeArticle, Featured, CreateArticleView, DeleteArticleView, Moderated
+from .views import Index, DetailArticleView, LikeArticle, Featured, CreateArticleView, DeleteArticleView, Moderated, Search
 
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
@@ -14,4 +14,5 @@ urlpatterns = [
     path('create/', CreateArticleView.as_view(), name='create'),
     path('<int:pk>/delete', DeleteArticleView.as_view(), name='delete'),
     path('<int:pk>/moderated', Moderated.as_view(), name='moderated'),
+    path('search/', Search.as_view(), name='search'),
 ]

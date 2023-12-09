@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 
 from django.views import View
@@ -17,6 +19,20 @@ class Index(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav_bar_color']= 'index'
+        return context
+
+class Search(ListView):
+    model = Article
+    template_name = 'core/index.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('-date')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav_bar_color']= 'index'
+        context['q'] = self.request.GET.get('q')
         return context
 
 

@@ -1,56 +1,61 @@
 {% extends "core/base.html" %}
 
 {% block content %}
+    <form action="{% url 'search' %}" method="get">
     <div class="row">
         <div class="input-group col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
-            <input type="text" class="form-control" placeholder="Поиск..." aria-label="Поиск..." aria-describedby="button-search">
-            <button class="btn btn-outline-secondary" type="button" id="button-search">Искать</button>
+            <input type="text" class="form-control" placeholder="Поиск..." aria-label="Поиск..." aria-describedby="button-search" name="q">
+            <button class="btn btn-outline-secondary" type="submit" id="button-search">Искать</button>
         </div>
     </div>
 
+
     <hr>
     
+
     <div class="row">
         <div class="col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
             <h1 class="fw-bolder colnav">Свежие новости</h1>
         </div>
     </div>
 
-    {% for object in object_list %}
-    <div class="row">
-        <div class="col-md-6 col-12 mx-md-auto mx-3 mt-3 mb-5">
-            <div class="card">
-                <img src="{{ object.image.url }}" class="card-img-top" alt="Что то пошло не так, изображения нет!">
-                <div class="card-body">
-                    <h3 class="card-title">{{ object.title }}</h3>
-                    <div class="row">
-                        <div class="col-10">
-                            <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
-                        </div>
-                        <div class="col-2">
-                            {% if object.likes.count == 0 %}
-                                <p class="text-secondary"><i class="fa fa-heart" aria-hidden="true"></i></p>
-                            {% else %}
-                                <p class="text-danger">{{ object.likes.count }} <i class="fa fa-heart" aria-hidden="true"></i></p>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="card-text my-3">
-                        {{ object.content|truncatewords_html:50|safe }}
-                    </div>
-                    <div class="container">
+
+
+        {% for object in object_list %}
+        <div class="row">
+            <div class="col-md-6 col-12 mx-md-auto mx-3 mt-3 mb-5">
+                <div class="card">
+                    <img src="{{ object.image.url }}" class="card-img-top" alt="Что то пошло не так, изображения нет!">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ object.title }}</h3>
                         <div class="row">
-                            <div class="col-12">
-                                <a href="{% url 'detail_article' object.id %}">Читать полностью</a>
+                            <div class="col-10">
+                                <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
                             </div>
-                         </div>
+                            <div class="col-2">
+                                {% if object.likes.count == 0 %}
+                                    <p class="text-secondary"><i class="fa fa-heart" aria-hidden="true"></i></p>
+                                {% else %}
+                                    <p class="text-danger">{{ object.likes.count }} <i class="fa fa-heart" aria-hidden="true"></i></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-text my-3">
+                            {{ object.content|truncatewords_html:50|safe }}
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="{% url 'detail_article' object.id %}">Читать полностью</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
-
+        {% endfor %}
+    </form>
     <nav>
         <ul class="pagination">
             <div class="mx-auto d-flex flex-row mb-5">
