@@ -58,6 +58,7 @@ class LikeArticle(View):
 
 
 class Moderated(View):
+
     def post(self, request, pk):
 
         article = Article.objects.get(id=pk)
@@ -66,6 +67,7 @@ class Moderated(View):
         article.save()
         return redirect('featured')
 
+   
     
 class CreateArticleView(LoginRequiredMixin, CreateView):
     model = Article
@@ -73,10 +75,17 @@ class CreateArticleView(LoginRequiredMixin, CreateView):
     fields =['title', 'content', 'image', ]
     success_url = reverse_lazy('index')
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav_bar_color']= 'new'
+        return context
+
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)   
    
+
+    
 
 class DeleteArticleView(DeleteView):
 	model = Article

@@ -57,7 +57,7 @@
                     </div>
                 {% endif %}
             </div>
-            {% if user.is_superuser and object.featured == False %}
+            {% if request.user.is_superuser and object.featured == False %}
                 <div class="col-6 text-end">
                 
                     <form method="POST" action="{% url 'moderated' object.id %}">
