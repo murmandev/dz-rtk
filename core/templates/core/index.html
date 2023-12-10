@@ -1,26 +1,25 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-    <form action="{% url 'search' %}" method="get">
+    <form action="{% url 'search' %}" method="GET">
     <div class="row">
-        <div class="input-group col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 my-2 mx-2  text-center">
+        <div class="input-group col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 my-2 mx-2 text-center">
             <input type="text" class="form-control mx-2" placeholder="Поиск..." aria-label="Поиск..." aria-describedby="button-search" name="q">
-        
-            <div class="btn-group btn-group-toggle" data-toggle="buttons" name="o">
+ 
+            <button class="btn btn-outline-secondary mx-2" type="submit" id="button-search">Искать</button>
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" name="choice">
                 <label class="btn btn-secondary">
-                  <input type="radio" name="date" id="date" autocomplete="off"> По дате
+                  <input type="radio" name="o_date" id="date" autocomplete="off"> По дате
                 </label>
                 <label class="btn btn-secondary">
-                  <input type="radio" name="title" id="title" autocomplete="off"> По заголовку 
+                  <input type="radio" name="o_title" id="title" autocomplete="off"> По заголовку 
                 </label>
                 <label class="btn btn-secondary">
-                  <input type="radio" name="author" id="author" autocomplete="off"> По автору
+                  <input type="radio" name="o_author" id="author" autocomplete="off"> По автору
                 </label>
             </div>
-
-            <button class="btn btn-outline-secondary mx-2" type="submit" id="button-search">Искать</button>
         </div>
-
         
     </div>
 

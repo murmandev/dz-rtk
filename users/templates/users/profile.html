@@ -13,7 +13,7 @@
                             <h4 class="text-start">НикНейм:</h4>
                         </div>
                         <div class="col-6">
-                            <h3 class="text-end">{{ user.username }}</h3>
+                            <h3 class="text-end">{{ request.user.username }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -21,7 +21,7 @@
                             <h4 class="text-start">Имя:</h4>
                         </div>
                         <div class="col-6">
-                            <h3 class="text-end">{{ user.first_name }}</h3>
+                            <h3 class="text-end">{{ request.user.first_name }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -29,7 +29,7 @@
                             <h4 class="text-start">Фамилия:</h4>
                         </div>
                         <div class="col-6">
-                            <h3 class="text-end">{{ user.last_name }}</h3>
+                            <h3 class="text-end">{{ request.user.last_name }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -37,7 +37,7 @@
                             <h4 class="text-start">EMail:</h4>
                         </div>
                         <div class="col-6">
-                            <h3 class="text-end">{{ user.email }}</h3>
+                            <h3 class="text-end">{{ request.user.email }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -45,7 +45,7 @@
                             <h4 class="text-start">Дата входа:</h4>
                         </div>
                         <div class="col-6">
-                            <h3 class="text-end">{{ user.last_login|date:"d.m.Y" }}</h3>
+                            <h3 class="text-end">{{ request.user.last_login|date:"d.m.Y" }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -53,7 +53,7 @@
                             <h4 class="text-start">Регистрация:</h4>
                         </div>
                         <div class="col-6">
-                            <h3 class="text-end">{{ user.date_joined|date:"d.m.Y" }}</h3>
+                            <h3 class="text-end">{{ request.user.date_joined|date:"d.m.Y" }}</h3>
                         </div>
                     </div>
                 <a href="#" class="btn btn-primary">Редактировать</a>

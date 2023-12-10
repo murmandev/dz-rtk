@@ -23,30 +23,27 @@ class Index(ListView):
 
 class Search(ListView):
     model = Article
-    template_name = 'core/index.html'
-    paginate_by = 5
+    template_name = 'core/search.html'
 
     def get_queryset(self):
-        if self.request.GET.get('date') == 'on':
+        if self.request.GET.get('o_date') == 'on':
             answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('-date')
             print('По дате!')
-        elif self.request.GET.get('title') == 'on':
+        elif self.request.GET.get('o_title') == 'on':
             answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('title')
             print('По заголовку!')
-        elif self.request.GET.get('author') == 'on':
+        elif self.request.GET.get('o_author') == 'on':
             answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q')).order_by('author')
             print('По автору!')
         else:
             answer = Article.objects.filter(featured = True, title__icontains = self.request.GET.get('q'))
-
-
         return answer
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav_bar_color']= 'index'
         context['q'] = self.request.GET.get('q')
-        context['o'] = self.request.GET.get('o')
+        context['choice'] = self.request.GET.getlist('choice')
         return context
 
 
