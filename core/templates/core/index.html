@@ -40,7 +40,7 @@
                         <h3 class="card-title">{{ object.title }}</h3>
                         <div class="row">
                             <div class="col-10">
-                                <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
+                                <p class="text-muted">Автор: <strong> {{ object.author.username }} </strong> |  Дата: <strong> {{ object.date }} </strong></p>
                             </div>
                             <div class="col-2">
                                 {% if object.likes.count == 0 %}

@@ -1,9 +1,34 @@
 {% extends "core/base.html" %}
 
 {% block content %}
+<form action="{% url 'search' %}" method="GET">
+    <div class="row">
+        <div class="input-group col-md-6 col-12 mx-md-auto mx-3 mt-5 mb-1 my-2 mx-2 text-center">
+            <input type="text" class="form-control mx-2" placeholder="Поиск..." aria-label="Поиск..." aria-describedby="button-search" name="q">
+ 
+            <button class="btn btn-outline-secondary mx-2" type="submit" id="button-search">Поиск/Сортировка</button>
+
+            <div class="btn-group btn-group-toggle" data-toggle="buttons" name="choice">
+                <label class="btn btn-secondary">
+                  <input type="radio" name="o_date" id="date" autocomplete="off"> По дате
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="o_title" id="title" autocomplete="off"> По заголовку 
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="o_author" id="author" autocomplete="off"> По автору
+                </label>
+            </div>
+        </div>
+        
+    </div>
+
+    <hr>
+
+
     <div class="row">
         <div class="col-md-9 col-12 mx-md-auto mx-3 mt-5 mb-1 text-center">
-            <h1 class="fw-bolder colnav">Результаты поиска</h1>
+            <h1 class="fw-bolder colnav">Результаты</h1>
         </div>
     </div>
 
@@ -16,7 +41,7 @@
                         <h3 class="card-title">{{ object.title }}</h3>
                         <div class="row">
                             <div class="col-10">
-                                <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
+                                <p class="text-muted">Автор: <strong> {{ object.author.username }} </strong> |  Дата: <strong> {{ object.date }} </strong></p>
                             </div>
                             <div class="col-2">
                                 {% if object.likes.count == 0 %}
