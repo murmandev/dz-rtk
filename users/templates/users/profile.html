@@ -57,6 +57,9 @@
                         </div>
                     </div>
                 <a href="#" class="btn btn-secondary">Редактировать</a>
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary">Панель администратора</a>
+                {% endif %}
             </div>
         </div>
     </div>
