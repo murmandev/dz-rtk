@@ -11,3 +11,6 @@ class Article(models.Model):
     featured    = models.BooleanField(default=False)
     likes       = models.ManyToManyField(User, related_name='likes', blank=True)
     image       = models.ImageField(upload_to='images/', verbose_name="Изображение")
+
+    def __str__(self):
+        return self.title
