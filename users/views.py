@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-#from .forms import UserRegisterForm
+
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
@@ -18,13 +18,13 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # появляется новый пользователь
+            user = form.save() 
             group = Group.objects.get(name="ReadOnly")
             user.groups.add(group)
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             authenticate(username=username, password=password)
-            # создаем пустой аккаунт
+            
             acc = Account(user.id)
             acc.save()
             messages.success(request, f'{username} был зарегистрирован!')
@@ -50,7 +50,7 @@ def profile_update(request):
     if request.method == "POST":
         user_form = UserUpdateForm(request.POST, instance=user)
         account_form = AccountUpdateForm(request.POST, request.FILES, instance=account)
-        # print('account_form.is_valid()', account_form.cleaned_data)
+
         if user_form.is_valid() and account_form.is_valid():
             user_form.save()
             account_form.save()

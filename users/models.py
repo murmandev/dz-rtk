@@ -27,4 +27,4 @@ class Account(models.Model):
         verbose_name_plural = "Профили"
 
     def __str__(self):
-        return f"{self.user.username}'s account"
+        return f"{self.user.username} - профиль"

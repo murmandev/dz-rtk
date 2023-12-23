@@ -1,6 +1,5 @@
 import datetime
 
-from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 
@@ -8,7 +7,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
+
 from .models import Article
 
 

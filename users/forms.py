@@ -2,7 +2,7 @@ from django import forms
 
 from django.contrib.auth.models import User
 from .models import Account
-from django.forms import TextInput, EmailInput, FileInput, Select, CheckboxInput
+from django.forms import TextInput, EmailInput, FileInput
 from django.contrib.auth.forms import UserChangeForm
 
 
