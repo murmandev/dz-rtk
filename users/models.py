@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Account(models.Model):
-    gender_choices = (('M', 'Male'),
-                      ('F', 'Female'),
-                      ('N/A', 'Not answered'))
+    gender_choices = (('M', 'Мужчина'),
+                      ('F', 'Женщина'),
+                      ('N/A', 'Не определился'))
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
@@ -27,4 +27,4 @@ class Account(models.Model):
         verbose_name_plural = "Профили"
 
     def __str__(self):
-        return f"{self.user.username} - профиль"
+        return f"{self.user.username} - профиль "
