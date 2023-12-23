@@ -1,3 +1,5 @@
+import datetime
+
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
@@ -90,6 +92,7 @@ class Moderated(View):
 
         article = Article.objects.get(id=pk)
         article.featured = True
+        article.date = datetime.date.today()
 
         article.save()
         return redirect('featured')

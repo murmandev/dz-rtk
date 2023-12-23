@@ -1,4 +1,6 @@
 {% extends 'core/base.html' %}
+{% load static %}
+{% load user_extras %}
 
 {% block content %}
 
@@ -51,13 +53,13 @@
 
         <div class="row">
             <div class="col-6 text-start">
-                {% if request.user.username == object.author.username or request.user.is_superuser %}
+                {% if request.user|has_group:"Admin" %}
                     <div class="pb-3">
                         <a href="{% url 'delete' object.pk %}" class="pb-3">Удалить</a>
                     </div>
                 {% endif %}
             </div>
-            {% if request.user.is_superuser and object.featured == False %}
+            {% if request.user|has_group:"Admin" and object.featured == False %}
                 <div class="col-6 text-end">
                 
                     <form method="POST" action="{% url 'moderated' object.id %}">

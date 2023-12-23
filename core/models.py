@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Article(models.Model):
@@ -14,3 +15,8 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['-date', 'title']        
+        verbose_name = "Статья"
+        verbose_name_plural = "Статьи"

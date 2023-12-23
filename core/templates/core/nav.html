@@ -1,4 +1,5 @@
 {% load static %}
+{% load user_extras %}
 
 <div class="container-fluid">
 
@@ -32,7 +33,7 @@
     
     {% if request.user.is_authenticated %}
     
-        {% if request.user.is_superuser %}
+        {% if request.user|has_group:"Admin" %}
             <div class="row">
                 <div class="d-xl-none col-12">
                     <h3 class="colnav">
@@ -52,23 +53,25 @@
             </div>
         {% endif %}
 
-        <div class="row">
-            <div class="d-xl-none col-12">
-                <h3 class="colnav">
-                    <a class="{% if nav_bar_color == 'new' %} link_active {% else %} link {% endif %}" title="Предложить новость" href="{% url 'create' %}">
-                        <i class="fa-solid fa-plus"></i>
+        {% if request.user|has_group:"Authors" or request.user|has_group:"Admin" %}
+            <div class="row">
+                <div class="d-xl-none col-12">
+                    <h3 class="colnav">
+                        <a class="{% if nav_bar_color == 'new' %} link_active {% else %} link {% endif %}" title="Предложить новость" href="{% url 'create' %}">
+                            <i class="fa-solid fa-plus"></i>
+                        </a>
+                    </h3>
+                </div>
+                <div class="d-none d-xl-block col-md-2 gx-1">
+                    <h4 class="colnav"><i class="fa-solid fa-plus"></i></h4>
+                </div>
+                <div class="col-md-10 d-none d-xl-block text-start">
+                    <a class="{% if nav_bar_color == 'new' %} link_active {% else %} link {% endif %}" href="{% url 'create' %}">
+                        <h4 title="Предложить новость">Новая</h4>
                     </a>
-                </h3>
+                </div>
             </div>
-            <div class="d-none d-xl-block col-md-2 gx-1">
-                <h4 class="colnav"><i class="fa-solid fa-plus"></i></h4>
-            </div>
-            <div class="col-md-10 d-none d-xl-block text-start">
-                <a class="{% if nav_bar_color == 'new' %} link_active {% else %} link {% endif %}" href="{% url 'create' %}">
-                    <h4 title="Предложить новость">Новая</h4>
-                </a>
-            </div>
-        </div>
+        {% endif %}
 
         <div class="row">
             <div class="d-xl-none col-12">

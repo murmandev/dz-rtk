@@ -3,6 +3,7 @@ crispy-bootstrap5==2023.10
 distlib==0.3.7
 Django==4.2.6
 django-crispy-forms==2.1
+django-debug-toolbar==4.2.0
 django-tinymce==3.6.1
 filelock==3.13.1
 Pillow==10.1.0

@@ -1,5 +1,6 @@
 {% extends 'core/base.html' %}
-
+{% load static%}
+{% load user_extras %}
 {% block content %}
 
 <div class="row">
@@ -9,11 +10,26 @@
             <div class="card-body">
                 <h2 class="text-center mb-5 card-title">Профиль пользователя:</h2>
                     <div class="row card-text">
+                        <div class="row">
+                            <div class="col-12">
+                                <img src="{{ request.user.account.account_image.url }}" alt="{{ request.user.username }}"
+                                class="rounded-circle" width="300" height="180">
+                            </div>
+                        </div>
+                    
                         <div class="col-6">
-                            <h4 class="text-start">НикНейм:</h4>
+                            <h4 class="text-start">Аккаунт:</h4>
                         </div>
                         <div class="col-6">
                             <h3 class="text-end">{{ request.user.username }}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="text-start">Ник:</h4>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="text-end">{{ request.user.account.nickname }}</h3>
                         </div>
                     </div>
                     <div class="row">
@@ -56,7 +72,7 @@
                             <h3 class="text-end">{{ request.user.date_joined|date:"d.m.Y" }}</h3>
                         </div>
                     </div>
-                <a href="#" class="btn btn-secondary">Редактировать</a>
+                <a href="{% url 'profile_update' %}" class="btn btn-primary">Редактировать</a>
                 {% if request.user.is_superuser %}
                     <a href="{% url 'admin:index' %}" class="btn btn-primary">Панель администратора</a>
                 {% endif %}
