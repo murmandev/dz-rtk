@@ -86,9 +86,9 @@
                 
                     <table class="table text-start">
                         <tr>
-                            <th>Публикация</th>
-                            <th>Название</th>
-                            <th>Событие</th>
+                            <th class="text-center">Статус</th>
+                            <th class="text-center">Заголовок</th>
+                            <th class="text-center">Действие</th>
                         </tr>
                         {% for article in article_by_user %}
                         <tr>
@@ -96,13 +96,12 @@
                                 {% if article.featured %}<p class="text-success">Главная</p> {% else %} <p class="text-warning">Модерация</p> {% endif %}
                             </td>
                             <td>
-                                <a href="{% url 'detail_article' article.id %}">{{ article.title|truncatewords_html:10 }}</a>
-                            </td>
-                            <td>
-                                <a href="{% url 'delete' article.id %}" class="btn btn-danger mx-3">Удалить</a>
+                                <a href="{% url 'detail_article' article.id %}">{{ article.title|truncatewords_html:8 }}</a>
                             </td>
                             <td>
                                 <a href="{% url 'article_update' article.id %}" class="btn btn-success mx-3">Редактировать</a>
+                                <a href="{% url 'delete' article.id %}" class="btn btn-danger mx-3">Удалить</a>
+
                             </td>
                         </tr>
                         {% endfor %}
