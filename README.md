@@ -30,10 +30,16 @@
     __login:      admin__  
     __password:   12345__  
 
+    __login:      Writer__  
+    __password:   Test12345__  
+
+    __login:      Readonly__  
+    __password:   Test12345__  
+
 
 __Всё протестировано на чистой машине (Chrome, Edge). Надеюсь вам понравится)__
 
-__Добавлены пользователи: test, test2, ivan - для тестирования добавления статей__
+__Добавлены пользователи: Writer, Readonly__
     
 Ссылка работы размещённой на хостинге:
 https://zatopol.pythonanywhere.com/
