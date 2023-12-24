@@ -93,7 +93,7 @@
                         {% for article in article_by_user %}
                         <tr>
                             <td>
-                                {% if article.featured %}<p class="text-success">Главная</p> {% else %} <p class="text-warning">Модерация</p> {% endif %}
+                                {% if article.featured %}<p class="text-success">Одобрено</p> {% else %} <p class="text-warning">Модерация</p> {% endif %}
                             </td>
                             <td>
                                 <a href="{% url 'detail_article' article.id %}">{{ article.title|truncatewords_html:8 }}</a>
