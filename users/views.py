@@ -31,7 +31,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserCreationForm()
-    context = {'form': form}
+        context = {'form': form}
     return render(request, 'users/register.html', context)
 
 
