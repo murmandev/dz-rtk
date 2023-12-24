@@ -37,16 +37,16 @@
                 <div class="card">
                     <img src="{{ object.image.url }}" class="card-img-top" alt="Что то пошло не так, изображения нет!">
                     <div class="card-body">
-                        <h3 class="card-title">{{ object.title }}</h3>
+                        <h3 class="card-title text-center">{{ object.title }}</h3>
                         <div class="row">
                             <div class="col-10">
                                 <p class="text-muted">Автор: <strong> {{ object.author.username }} </strong> |  Дата: <strong> {{ object.date }} </strong></p>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 text-end">
                                 {% if object.likes.count == 0 %}
-                                    <p class="text-secondary"><i class="fa fa-heart" aria-hidden="true"></i></p>
+                                    <h5 class="text-primary"><i class="fa fa-heart" aria-hidden="true"></i></h5>
                                 {% else %}
-                                    <p class="text-danger">{{ object.likes.count }} <i class="fa fa-heart" aria-hidden="true"></i></p>
+                                    <h5 class="text-danger">{{ object.likes.count }} <i class="fa fa-heart" aria-hidden="true"></i></h5>
                                 {% endif %}
                             </div>
                         </div>

@@ -16,7 +16,7 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
-media
+
 
 # Visual Studio Code # 
 .vscode/* 
@@ -26,5 +26,3 @@ media
 !.vscode/extensions.json 
 .history
 
-# DB
-*.sqlite3

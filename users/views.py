@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .models import Account
 
+from core.models import Article
 
 
 
@@ -31,13 +32,15 @@ def register(request):
             return redirect('login')
     else:
         form = UserCreationForm()
-        context = {'form': form}
+    context = {'form': form}
     return render(request, 'users/register.html', context)
 
 
 
 def profile_show(request):
-    context = dict()
+
+    article_by_user = Article.objects.filter(author=request.user).order_by('featured', '-date', 'title')
+    context = {'article_by_user': article_by_user }
     context['nav_bar_color'] = 'profile'
     return render(request, 'users/profile.html', context)
 

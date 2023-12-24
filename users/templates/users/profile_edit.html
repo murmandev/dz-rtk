@@ -20,8 +20,8 @@
                                     {{ account_form.account_image }}
                                 </div>
 
-                                </div>
                             </div>
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <h4 class="text-start">Аккаунт:</h4>
@@ -62,7 +62,8 @@
                                 <h3 class="text-end">{{ user_form.email }}</h3>
                             </div>
                         </div>
-                    <button class="btn btn-outline-success" style="margin-bottom:15px;" href="{% url 'profile' %}"> Сохранить </button>
+                    <button class="btn btn-success" href="{% url 'profile' %}"> Сохранить </button>
+                    <a href="javascript:history.back()" class="btn btn-primary">Назад</a>
 
                     <!-- <a href="{% url 'profile' %}" class="btn btn-primary">Обновить</a> -->
                 </div>

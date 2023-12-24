@@ -13,6 +13,10 @@
     color: blue;
 }
 
+.colnav a:hover {
+    color: #851515;
+}
+
 .menu_fixed {
     height: 100%; 
     width: 200px; 

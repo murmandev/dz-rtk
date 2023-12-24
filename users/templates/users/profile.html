@@ -72,12 +72,44 @@
                             <h3 class="text-end">{{ request.user.date_joined|date:"d.m.Y" }}</h3>
                         </div>
                     </div>
-                <a href="{% url 'profile_update' %}" class="btn btn-primary">Редактировать</a>
+                <a href="{% url 'profile_update' %}" class="btn btn-success">Редактировать</a>
                 {% if request.user.is_superuser %}
-                    <a href="{% url 'admin:index' %}" class="btn btn-primary">Панель администратора</a>
+                    <a href="{% url 'admin:index' %}" class="btn btn-warning">Панель администратора</a>
                 {% endif %}
+                <a href="{% url 'index' %}" class="btn btn-primary">На главную</a>
+                
             </div>
         </div>
+
+        
+            <h3 class="text-center">Мои статьи</h3>
+                
+                    <table class="table text-start">
+                        <tr>
+                            <th>Публикация</th>
+                            <th>Название</th>
+                            <th>Событие</th>
+                        </tr>
+                        {% for article in article_by_user %}
+                        <tr>
+                            <td>
+                                {% if article.featured %}<p class="text-success">Главная</p> {% else %} <p class="text-warning">Модерация</p> {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'detail_article' article.id %}">{{ article.title|truncatewords_html:10 }}</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete' article.id %}" class="btn btn-danger mx-3">Удалить</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'article_update' article.id %}" class="btn btn-success mx-3">Редактировать</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                
+            
+        
     </div>
 </div>
 

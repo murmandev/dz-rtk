@@ -13,8 +13,8 @@
             <div class="card">
                 <img src="{{ object.image.url }}" class="card-img-top" alt="Что то пошло не так, изображения нет!">
                 <div class="card-body">
-                    <h3 class="card-title">{{ object.title }}</h3>
-                    <p class="text-muted">Автор: {{ object.author.username }}  |  Дата: {{ object.date }} </p>
+                    <h3 class="card-title text-center">{{ object.title }}</h3>
+                    <p class="text-muted">Автор: <strong> {{ object.author.username }} </strong> |  Дата: <strong> {{ object.date }} </strong></p>
                     <div class="card-text my-3">
                         {{ object.content|truncatewords_html:50|safe }}
                     </div>
@@ -25,9 +25,9 @@
                             </div>
                             <div class="col-4 text-end">
                                 {% if object.likes.count == 0 %}
-                                    <p class="text-muted"> 🖤 </p>
+                                    <h5 class="text-primary"><i class="fa fa-heart" aria-hidden="true"></i></h5>
                                 {% else %}
-                                    <p class="text-muted">{{ object.likes.count }} ❤</p>
+                                    <h5 class="text-danger">{{ object.likes.count }} <i class="fa fa-heart" aria-hidden="true"></i></h5>
                                 {% endif %}
                             </div>
                         </div>

@@ -4,11 +4,13 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Article
+from .forms import ArticleUpdateForm
+from django.contrib import messages
 
 
 class Index(ListView):
@@ -113,11 +115,14 @@ class CreateArticleView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)   
    
 
-    
-
 class DeleteArticleView(DeleteView):
 	model = Article
 	template_name = 'core/delete.html'
 	success_url = reverse_lazy('index')
      
 
+class UpdateArticleView(UpdateView):
+    model = Article
+    template_name = 'core/article_edit.html'
+    form_class = ArticleUpdateForm
+    success_url = reverse_lazy('profile')

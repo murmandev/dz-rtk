@@ -35,9 +35,9 @@
                             <button class="btn">
                             
                                 {% if object.likes.count == 0 %}
-                                    <p class="text-secondary"><i class="fa fa-heart" aria-hidden="true"></i></p>
+                                    <h5 class="text-primary"><i class="fa fa-heart" aria-hidden="true"></i></h5>
                                 {% else %}
-                                    <p class="text-danger">{{ object.likes.count }} <i class="fa fa-heart" aria-hidden="true"></i></p>
+                                    <h5 class="text-danger">{{ object.likes.count }} <i class="fa fa-heart" aria-hidden="true"></i></h5>
                                 {% endif %}
                              
                              </button>
@@ -53,11 +53,14 @@
 
         <div class="row">
             <div class="col-6 text-start">
-                {% if request.user|has_group:"Admin" %}
-                    <div class="pb-3">
-                        <a href="{% url 'delete' object.pk %}" class="pb-3">Удалить</a>
+
+                    <div class="pb-3 colnav">
+                        <a href="javascript:history.back()" class="btn btn-primary mx-3">Назад</a>
+                        {% if request.user|has_group:"Admin" %}
+                            <a href="{% url 'delete' object.pk %}" class="btn btn-danger">Удалить</a>
+                        {% endif %}
                     </div>
-                {% endif %}
+                
             </div>
             {% if request.user|has_group:"Admin" and object.featured == False %}
                 <div class="col-6 text-end">
@@ -65,7 +68,7 @@
                     <form method="POST" action="{% url 'moderated' object.id %}">
                         {% csrf_token %}
                         <button class="btn">
-                            <p title="Одобрить предложенную новость" class="text-primary"><i class="fa-solid fa-newspaper"></i></p>
+                            <h6 title="Одобрить предложенную новость" class="text-primary"><i class="fa-solid fa-newspaper"></i> Опубликовать </h6>
                         </button>
                     </form>
                 </div>

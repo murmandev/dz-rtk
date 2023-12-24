@@ -11,10 +11,10 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-6 text-end">
-                        <button class="btn btn-primary" type="submit">Подтвердить</button>
+                        <button class="btn btn-danger" type="submit">Подтвердить</button>
                     </div>
                     <div class="col-6 text-start">
-                        <a class="btn btn-primary" href="{% url 'index' %}">Отмена</a>
+                        <a class="btn btn-primary" href="javascript:history.back()">Отмена</a>
                     </div>
                 </div>
             </form>
